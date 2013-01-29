@@ -29,7 +29,7 @@ def get_server_details(host, port):
 
     urt_server_details['players'] = []
     for x in range(2, (len(response_lines) - 1)):
-        player_data = response_lines[x].split(" ")
+        player_data = response_lines[x].split(" ",2)
         player_dictionary = {"ping": player_data[1], "kills": player_data[0], "name": player_data[2][1:-1]}
         urt_server_details['players'].append(player_dictionary)
 
