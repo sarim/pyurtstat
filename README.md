@@ -1,9 +1,9 @@
 ## Usage:
 
-`./pyurtstat.py SERVER -p PORT -c [OPTIONS]`
+`./pyurtstat.py SERVER[:PORT] -c [OPTIONS]`
 
     SERVER:		Required, ip or hostname of urbanterror server.
-    PORT:		Required, port of urbanterror server.
+    PORT:		Optional, port of urbanterror server. Default 27960 used if not specified.
     OPTIONS:	Optional, comma separated list of server options you want to retrive and display
 
 
@@ -32,7 +32,7 @@
 2. Empty server
 
 
-        $ python pyurtstat.py urt.sarimkhan.com -p 2222
+        $ python pyurtstat.py urt.sarimkhan.com:2222
 
 		-------------------------
 		urt.sarimkhan.com:2222
@@ -42,7 +42,7 @@
 		
 3. Querying single config option
 		
-		$ python pyurtstat.py urtbd.com -p 2222 -c g_redwave,g_bluewave,Admin
+		$ python pyurtstat.py urtbd.com:2222 -c g_redwave,g_bluewave,Admin
 		
 		-------------------------
 		urtbd.com:2222
@@ -56,7 +56,7 @@
 		
 4. Querying all options     
 		
-		$ python pyurtstat.py urtbd.com -p 2222 -c all
+		$ python pyurtstat.py urtbd.com:2222 -c all
 		
 		-------------------------
 		urtbd.com:2222
@@ -114,10 +114,3 @@
 		g_antilagvis                   	 0                             
 		sv_maxRate                     	 0                             
 		sv_maxPing                     	 0                             
-		
-		
-		              
-				
-		
-		
-
