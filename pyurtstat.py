@@ -38,13 +38,12 @@ def get_server_details(host, port):
 
 def print_usages():
     print "-h,--help\t Display this message"
-    print "-p,--port\t Specify a port"
     print "-c,--configs\t Specify one or more server configuration opetion (seperate with comma). Use 'all' to print all config values"
 
 
 def main():
     try:
-        opts, args = getopt.gnu_getopt(sys.argv[1:], "hp:c:", ["help", "port=", "configs="])
+        opts, args = getopt.gnu_getopt(sys.argv[1:], "hc:", ["help", "configs="])
     except getopt.GetoptError, err:
         print_usages()
         sys.exit(2)
@@ -53,9 +52,7 @@ def main():
     configs = []
 
     for option, value in opts:
-        if option in ("-p", "--port"):
-            port = value
-        elif option in ("-c", "--configs"):
+        if option in ("-c", "--configs"):
             configs = value.split(",")
         elif option in ("-h", "--help"):
             print_usages()
@@ -69,6 +66,9 @@ def main():
         sys.exit(2)
     else:
         host = args[0]
+        if ":" in host:
+            port = int(host.split(":")[1])
+            host = host.split(":")[0]
 
     server_details = get_server_details(host, port)
     print ""
